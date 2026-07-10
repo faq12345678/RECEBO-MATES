@@ -1,0 +1,395 @@
+/* ============================================================
+   RECEBO MATES — Catálogo Page Styles
+   ============================================================ */
+
+/* ─── Toolbar: filtros + contador ───────────────────────── */
+
+.catalog-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-10);
+  flex-wrap: wrap;
+}
+
+/* ─── Filtros ───────────────────────────────────────────── */
+
+.catalog-filters {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: .45rem 1.1rem;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--color-border, #ddd);
+  background-color: var(--color-surface, #fff);
+  font-family: var(--font-sans);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--color-text-2, #555);
+  cursor: pointer;
+  transition:
+    background-color .2s ease,
+    border-color     .2s ease,
+    color            .2s ease,
+    box-shadow       .2s ease,
+    transform        .15s ease;
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.filter-btn:hover {
+  border-color: var(--color-green, #2F4F3E);
+  color: var(--color-green, #2F4F3E);
+  background-color: rgba(47, 79, 62, .06);
+}
+
+.filter-btn:active {
+  transform: scale(.97);
+}
+
+.filter-btn--active {
+  background-color: var(--color-green, #2F4F3E);
+  border-color: var(--color-green, #2F4F3E);
+  color: #fff;
+  box-shadow: 0 3px 12px rgba(47, 79, 62, .3);
+}
+
+.filter-btn--active:hover {
+  background-color: #3d6651;
+  border-color: #3d6651;
+  color: #fff;
+}
+
+/* ─── Contador de resultados ────────────────────────────── */
+
+.catalog-count {
+  font-size: .8rem;
+  color: var(--color-text-3, #888);
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ─── Ocultar tarjetas filtradas ────────────────────────── */
+
+/* Cuando el JS aplica el filtro, el elemento recibe [hidden] y la clase.
+   Ambas reglas son necesarias: [hidden] es semántico, la clase permite animación. */
+
+.catalog-card[hidden],
+.catalog-card--oculta {
+  display: none !important;
+}
+
+/* ─── Grilla de productos ───────────────────────────────── */
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6, 1.5rem);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: start;     /* Cada tarjeta crece solo hasta su contenido */
+}
+
+@media (max-width: 1100px) {
+  .catalog-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 800px) {
+  .catalog-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+}
+
+@media (max-width: 420px) {
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+}
+
+/* ─── Tarjeta de producto ───────────────────────────────── */
+
+.catalog-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface, #fff);
+  border: 1px solid var(--color-border, #e8e3db);
+  border-radius: var(--radius-xl, 16px);
+  overflow: hidden;
+  transition:
+    box-shadow   .25s ease,
+    border-color .25s ease,
+    transform    .25s ease;
+}
+
+.catalog-card:hover {
+  box-shadow: 0 10px 36px rgba(0, 0, 0, .11);
+  border-color: rgba(47, 79, 62, .22);
+  transform: translateY(-4px);
+}
+
+/* ── Imagen: ratio 3:4 fijo (no se deforma nunca) ────────── */
+
+.catalog-card__img-wrap {
+  position: relative;
+  width: 100%;
+  padding-bottom: 133.33%;  /* 3:4 — height / width × 100 */
+  overflow: hidden;
+  background-color: var(--color-ivory-alt, #f5f0ea);
+  flex-shrink: 0;
+}
+
+.catalog-card__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform .4s ease;
+}
+
+.catalog-card:hover .catalog-card__img {
+  transform: scale(1.05);
+}
+
+/* Fallback cuando la imagen no carga */
+.catalog-card__img-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  color: var(--color-warm-light, #bbb);
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .05em;
+  text-align: center;
+  padding: var(--space-4);
+  background: linear-gradient(160deg, var(--color-ivory-alt, #f5f0ea) 0%, #e8ddd4 100%);
+}
+
+/* ── Badge sobre la imagen ───────────────────────────────── */
+
+.catalog-card__badge {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 2;
+  padding: .2rem .6rem;
+  border-radius: var(--radius-full, 999px);
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  background-color: var(--color-charcoal, #1a1a1a);
+  color: #fff;
+  line-height: 1.6;
+}
+
+.catalog-card__badge--gold {
+  background-color: #8B6B4E;
+  color: #fff;
+}
+
+.catalog-card__badge--green {
+  background-color: var(--color-green, #2F4F3E);
+  color: #fff;
+}
+
+/* ── Body ────────────────────────────────────────────────── */
+
+.catalog-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-4) var(--space-3);
+  flex: 1;
+}
+
+.catalog-card__category {
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--color-green, #2F4F3E);
+  opacity: .85;
+}
+
+.catalog-card__name {
+  font-family: var(--font-serif);
+  font-size: var(--text-base, 1rem);
+  font-weight: 700;
+  color: var(--color-charcoal, #1a1a1a);
+  letter-spacing: var(--tracking-tight, -.01em);
+  line-height: 1.25;
+  margin: 0;
+}
+
+.catalog-card__desc {
+  font-size: .78rem;
+  color: var(--color-text-3, #888);
+  line-height: 1.55;
+  flex: 1;
+  margin: 0;
+}
+
+/* ── Footer de la tarjeta: precio + botón ────────────────── */
+
+.catalog-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border, #e8e3db);
+}
+
+.catalog-card__price {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-charcoal, #1a1a1a);
+  letter-spacing: var(--tracking-tight, -.01em);
+  white-space: nowrap;
+}
+
+.catalog-card__price--pending {
+  font-family: var(--font-sans);
+  font-size: .72rem;
+  font-weight: 500;
+  color: var(--color-text-3, #888);
+  white-space: normal;
+}
+
+/* ── Responsive tarjeta mobile ────────────────────────────── */
+
+@media (max-width: 640px) {
+  .catalog-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+  }
+
+  .catalog-filters {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: var(--space-2);
+    -webkit-overflow-scrolling: touch;
+    /* Scroll horizontal en mobile */
+    scrollbar-width: none;
+  }
+  .catalog-filters::-webkit-scrollbar { display: none; }
+
+  .filter-btn {
+    font-size: .72rem;
+    padding: .4rem .85rem;
+    flex-shrink: 0;
+  }
+
+  .catalog-card__name {
+    font-size: .9rem;
+  }
+
+  .catalog-card__footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
+  .catalog-card__footer .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .catalog-card__body {
+    padding: var(--space-3);
+  }
+}
+
+/* ─── Estado vacío ──────────────────────────────────────── */
+
+.catalog-empty {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  text-align: center;
+  padding: var(--space-16) var(--space-8);
+}
+
+.catalog-empty__icon { color: var(--color-warm-light, #ccc); }
+
+.catalog-empty__title {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-charcoal);
+}
+
+.catalog-empty__text {
+  font-size: var(--text-sm);
+  color: var(--color-text-3);
+  max-width: 36ch;
+  line-height: 1.6;
+}
+
+/* ─── CTA WhatsApp Strip ────────────────────────────────── */
+
+.catalog-wa-strip {
+  background-color: var(--color-dark-bg, #111);
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+
+.catalog-wa-strip__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+  padding-block: var(--space-12);
+}
+
+.catalog-wa-strip__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.catalog-wa-strip__title {
+  font-size: var(--text-2xl);
+  color: var(--color-dark-text, #f5f0ea);
+  margin: 0;
+}
+
+.catalog-wa-strip__text p {
+  font-size: var(--text-base);
+  color: var(--color-dark-text-2, rgba(245,240,234,.65));
+  font-weight: 300;
+}
+
+@media (max-width: 640px) {
+  .catalog-wa-strip__inner {
+    flex-direction: column;
+    text-align: center;
+    padding-block: var(--space-8);
+  }
+}

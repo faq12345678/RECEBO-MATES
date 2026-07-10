@@ -1,0 +1,223 @@
+/* ============================================================
+   RECEBO MATES — Design Tokens  ·  Etapa 6 (Visual Final)
+   Todas las variables del sistema de diseño.
+   Modificar acá impacta globalmente en toda la web.
+   ============================================================ */
+
+:root {
+
+  /* ─────────────────────────────────────────────────────────
+     PALETA DE COLORES
+  ───────────────────────────────────────────────────────── */
+
+  /* Fondos — cálidos, cremosos */
+  --color-ivory:      #F6F2EB;   /* Fondo principal — marfil cálido */
+  --color-ivory-alt:  #EDE7DC;   /* Fondo secciones alternas */
+  --color-white:      #FFFFFF;   /* Tarjetas / superficies elevadas */
+
+  /* Texto */
+  --color-black:      #0A0806;   /* Texto principal — negro cálido */
+  --color-charcoal:   #1C1814;   /* Headings */
+  --color-warm-dark:  #3B3028;   /* Texto secundario */
+  --color-warm-mid:   #6B5C4E;   /* Texto muted */
+  --color-warm-light: #B0A093;   /* Placeholders / disabled */
+
+  /* ─── Verde Yerba Mate — protagonista de Etapa 6 ───── */
+  --color-green:       #1B4332;  /* Verde profundo — acento primario */
+  --color-green-lt:    #2D6A4F;  /* Verde medio — hover */
+  --color-green-xlt:   #40916C;  /* Verde claro — highlight */
+  --color-green-pale:  #D8F3DC;  /* Verde muy pálido — backgrounds sutiles */
+  --color-green-tint:  rgba(27, 67, 50, 0.07);  /* Tint transparente para cards */
+
+  /* ─── Cuero / Madera — acento cálido secundario ───── */
+  --color-leather:    #7B4119;   /* Cuero — marrón cálido */
+  --color-leather-lt: #9E5728;   /* Cuero claro / hover */
+  --color-leather-dk: #581B04;   /* Cuero oscuro / pressed */
+
+  /* ─── Dorado / Alpaca ──────────────────────────────── */
+  --color-gold:       #B8954E;   /* Alpaca dorada */
+  --color-gold-lt:    #CEB06A;   /* Oro claro */
+  --color-gold-dk:    #96783C;   /* Oro oscuro */
+
+  /* Acero / Neutro */
+  --color-steel:      #6B7A76;
+
+  /* ─── Aliases semánticos ────────────────────────────── */
+  /* El acento principal ahora es el VERDE */
+  --color-bg:         var(--color-ivory);
+  --color-surface:    var(--color-white);
+  --color-text:       var(--color-black);
+  --color-text-2:     var(--color-warm-dark);
+  --color-text-3:     var(--color-warm-mid);
+  --color-accent:     var(--color-green);        /* ← Verde como primario */
+  --color-accent-lt:  var(--color-green-lt);
+  --color-accent-2:   var(--color-leather);      /* ← Cuero como secundario */
+  --color-border:     #DDD7CC;
+  --color-border-2:   #C4BAA8;
+
+  /* Sección oscura */
+  --color-dark-bg:      #0C0F0A;   /* Toque de verde en negro */
+  --color-dark-surface: #161A13;
+  --color-dark-text:    #F3EFE6;
+  --color-dark-text-2:  #A89A80;
+  --color-dark-border:  #242B1E;   /* Verde oscuro sutil */
+
+  /* WhatsApp */
+  --color-wa:           #25D366;
+  --color-wa-dk:        #1DA851;
+
+
+  /* ─────────────────────────────────────────────────────────
+     TIPOGRAFÍA
+  ───────────────────────────────────────────────────────── */
+
+  --font-serif:  'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans:   'Inter', system-ui, -apple-system, sans-serif;
+  --font-script: 'Caveat', cursive;
+
+  /* Escala tipográfica fluida — ligeramente aumentada para más presencia */
+  --text-2xs:  clamp(0.6250rem, 1.2vw,  0.6875rem);   /*  10/11px */
+  --text-xs:   clamp(0.7500rem, 1.5vw,  0.8125rem);   /*  12/13px */
+  --text-sm:   clamp(0.8125rem, 1.7vw,  0.9375rem);   /*  13/15px */
+  --text-base: clamp(0.9375rem, 2vw,    1.0625rem);   /*  15/17px */
+  --text-md:   clamp(1.0000rem, 2.2vw,  1.1250rem);   /*  16/18px */
+  --text-lg:   clamp(1.1250rem, 2.5vw,  1.4000rem);   /*  18/22px */
+  --text-xl:   clamp(1.2500rem, 3vw,    1.6500rem);   /*  20/26px */
+  --text-2xl:  clamp(1.5000rem, 4vw,    2.1875rem);   /*  24/35px */
+  --text-3xl:  clamp(2.0000rem, 5vw,    3.1250rem);   /*  32/50px */
+  --text-4xl:  clamp(2.7500rem, 6.5vw,  4.5000rem);   /*  44/72px */
+  --text-5xl:  clamp(3.5000rem, 8vw,    6.2500rem);   /*  56/100px */
+
+  /* Pesos */
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-black:    900;
+
+  /* Interlineado */
+  --leading-none:    1;
+  --leading-tight:   1.1;
+  --leading-snug:    1.3;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.72;
+  --leading-loose:   2;
+
+  /* Tracking */
+  --tracking-tightest: -0.04em;
+  --tracking-tight:    -0.02em;
+  --tracking-base:     -0.01em;
+  --tracking-wide:      0.05em;
+  --tracking-wider:     0.08em;
+  --tracking-widest:    0.18em;
+
+
+  /* ─────────────────────────────────────────────────────────
+     ESPACIADO (base 4px)
+  ───────────────────────────────────────────────────────── */
+
+  --space-0-5: 0.125rem;   /*  2px */
+  --space-1:   0.25rem;    /*  4px */
+  --space-1-5: 0.375rem;   /*  6px */
+  --space-2:   0.5rem;     /*  8px */
+  --space-2-5: 0.625rem;   /* 10px */
+  --space-3:   0.75rem;    /* 12px */
+  --space-4:   1rem;       /* 16px */
+  --space-5:   1.25rem;    /* 20px */
+  --space-6:   1.5rem;     /* 24px */
+  --space-7:   1.75rem;    /* 28px */
+  --space-8:   2rem;       /* 32px */
+  --space-10:  2.5rem;     /* 40px */
+  --space-12:  3rem;       /* 48px */
+  --space-14:  3.5rem;     /* 56px */
+  --space-16:  4rem;       /* 64px */
+  --space-20:  5rem;       /* 80px */
+  --space-24:  6rem;       /* 96px */
+  --space-28:  7rem;       /* 112px */
+  --space-32:  8rem;       /* 128px */
+  --space-40:  10rem;      /* 160px */
+  --space-48:  12rem;      /* 192px */
+
+
+  /* ─────────────────────────────────────────────────────────
+     LAYOUT
+  ───────────────────────────────────────────────────────── */
+
+  --container-max:    1280px;
+  --container-wide:   1440px;
+  --container-narrow: 680px;
+  --container-px:     clamp(1.25rem, 5vw, 3.5rem);
+  --nav-height:       72px;
+  --nav-height-sm:    60px;
+
+
+  /* ─────────────────────────────────────────────────────────
+     BORDER RADIUS
+  ───────────────────────────────────────────────────────── */
+
+  --radius-xs:   3px;
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   16px;
+  --radius-xl:   26px;
+  --radius-2xl:  40px;
+  --radius-full: 9999px;
+
+
+  /* ─────────────────────────────────────────────────────────
+     SOMBRAS — ahora con matiz verde oscuro
+  ───────────────────────────────────────────────────────── */
+
+  --shadow-xs:  0 1px 2px  rgba(8, 12, 8, 0.05);
+  --shadow-sm:  0 1px 6px  rgba(8, 12, 8, 0.07),  0 1px 2px rgba(8,12,8,0.04);
+  --shadow-md:  0 4px 18px rgba(8, 12, 8, 0.09),  0 2px 5px rgba(8,12,8,0.04);
+  --shadow-lg:  0 8px 32px rgba(8, 12, 8, 0.11),  0 4px 8px rgba(8,12,8,0.05);
+  --shadow-xl:  0 20px 60px rgba(8,12,8,0.13), 0 8px 20px rgba(8,12,8,0.06);
+  --shadow-2xl: 0 32px 80px rgba(8,12,8,0.17);
+
+  /* Sombras de color */
+  --shadow-green:   0 8px 28px rgba(27, 67, 50, 0.35);
+  --shadow-leather: 0 8px 28px rgba(123, 65, 25, 0.30);
+  --shadow-wa:      0 6px 22px rgba(37, 211, 102, 0.38);
+
+  /* Sombra inset suave para cards hover */
+  --shadow-card-hover: 0 12px 40px rgba(27, 67, 50, 0.12), 0 4px 12px rgba(8,12,8,0.06);
+
+
+  /* ─────────────────────────────────────────────────────────
+     TRANSICIONES — más suaves y rápidas
+  ───────────────────────────────────────────────────────── */
+
+  --ease-base:    cubic-bezier(0.25, 0.1,  0.25, 1);
+  --ease-out:     cubic-bezier(0,    0,    0.2,  1);
+  --ease-in:      cubic-bezier(0.4,  0,    1,    1);
+  --ease-spring:  cubic-bezier(0.34, 1.46, 0.64, 1);  /* más suave que 1.56 */
+  --ease-smooth:  cubic-bezier(0.16, 1,    0.3,  1);  /* nuevo: muy orgánico */
+
+  --duration-instant: 100ms;
+  --duration-fast:    150ms;
+  --duration-base:    260ms;
+  --duration-slow:    420ms;
+  --duration-slower:  650ms;
+
+  --transition-fast:   var(--duration-fast)   var(--ease-base);
+  --transition-base:   var(--duration-base)   var(--ease-base);
+  --transition-slow:   var(--duration-slow)   var(--ease-smooth);
+  --transition-spring: var(--duration-base)   var(--ease-spring);
+
+
+  /* ─────────────────────────────────────────────────────────
+     Z-INDEX
+  ───────────────────────────────────────────────────────── */
+
+  --z-below:    -1;
+  --z-base:      0;
+  --z-raised:   10;
+  --z-floating: 50;
+  --z-nav:     100;
+  --z-overlay: 200;
+  --z-modal:   300;
+  --z-toast:   400;
+
+}

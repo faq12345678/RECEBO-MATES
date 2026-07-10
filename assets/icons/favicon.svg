@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Fondo crema, igual que el logo real -->
+  <rect width="32" height="32" rx="6" fill="#F4F1EC"/>
+  <!--
+    Isotipo Recebo: el símbolo de bombilla / "R" estilizado
+    Fiel al logo adjuntado: trazo negro fino sobre fondo claro.
+    Forma: línea horizontal a la izquierda + curva ascendente a la derecha arriba
+            + curva descendente hacia abajo-izquierda (como el glyph de la imagen)
+  -->
+  <path
+    d="M10 17 L15 17 C15 17 20 17 20 13 C20 9 15 9 15 9"
+    stroke="#1a1a1a"
+    stroke-width="2.2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
+  <path
+    d="M15 17 C15 17 20 17 20 22"
+    stroke="#1a1a1a"
+    stroke-width="2.2"
+    stroke-linecap="round"
+    fill="none"
+  />
+</svg>
