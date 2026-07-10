@@ -1,0 +1,13 @@
+# robots.txt — Recebo Mates
+# https://recebomates.com.ar
+
+# ─── Regla general: permitir todo a todos los bots ───────────────
+User-agent: *
+Allow: /
+
+# ─── Archivos que no deben indexarse ────────────────────────────
+Disallow: /404.html
+
+# ─── Sitemap ─────────────────────────────────────────────────────
+# COMPLETAR: Reemplazá con la URL real del dominio cuando hagas el deploy
+Sitemap: https://recebomates.com.ar/sitemap.xml

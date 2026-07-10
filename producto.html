@@ -1,0 +1,244 @@
+﻿<!DOCTYPE html>
+<!--
+  RECEBO MATES — Página de Producto Dinámica (producto.html)
+  ──────────────────────────────────────────────────────────
+  Esta página se rellena automáticamente vía JS según el
+  parámetro ?id= de la URL.
+  Ejemplo: producto.html?id=rancheroo
+  ──────────────────────────────────────────────────────────
+  Para agregar un producto nuevo:
+  → Editá js/productos-data.js y agregá un objeto al array PRODUCTOS.
+  → La URL del catálogo ya debe apuntar a producto.html?id=[id]
+-->
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Título y meta dinámicos — el JS los actualiza en tiempo de ejecución -->
+  <title>Producto — Recebo Mates</title>
+  <meta name="description" content="Mates artesanales, termos, bombillas y accesorios. Recebo Mates. Envíos a todo el país." />
+  <link rel="canonical" href="https://recebomates.com.ar/producto.html" />
+  <meta property="og:title"       content="Producto — Recebo Mates" />
+  <meta property="og:description" content="Mates artesanales, termos, bombillas y accesorios." />
+  <meta property="og:type"        content="product" />
+  <link rel="icon" href="assets/icons/favicon.jpg" type="image/jpeg" />
+  <link rel="shortcut icon" href="assets/icons/favicon.jpg" type="image/jpeg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages/producto.css" />
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Saltar al contenido principal</a>
+
+  <header>
+    <nav id="siteNav" class="site-nav" aria-label="Navegación principal">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo" aria-label="Recebo Mates — Ir al inicio"><img src="img/logo-recebo.jpg" alt="Recebo Mates" class="nav-logo__img" width="40" height="40" /></a>
+        <ul class="nav-links" role="list" aria-label="Menú principal">
+          <li><a href="index.html"    class="nav-link">Inicio</a></li>
+          <li><a href="catalogo.html" class="nav-link">Catálogo</a></li>
+          <li><a href="nosotros.html" class="nav-link">Nosotros</a></li>
+          <li><a href="faq.html"      class="nav-link">Preguntas Frecuentes</a></li>
+          <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="catalogo.html" class="btn btn--primary btn--sm" id="navCtaDesktop">Ver catálogo</a>
+          <button id="navBurger" class="nav-burger" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobileMenu">
+            <span class="burger-bar" aria-hidden="true"></span>
+            <span class="burger-bar" aria-hidden="true"></span>
+            <span class="burger-bar" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div id="mobileMenu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Menú de navegación" aria-hidden="true">
+    <div class="mobile-menu__inner">
+      <nav class="mobile-nav" aria-label="Navegación mobile">
+        <a href="index.html"    class="mobile-nav__link">Inicio</a>
+        <a href="catalogo.html" class="mobile-nav__link">Catálogo</a>
+        <a href="nosotros.html" class="mobile-nav__link">Nosotros</a>
+        <a href="faq.html"      class="mobile-nav__link">Preguntas Frecuentes</a>
+        <a href="contacto.html" class="mobile-nav__link">Contacto</a>
+      </nav>
+      <div class="mobile-menu__footer">
+        <a href="https://wa.me/5491101283885?text=Hola%2C%20quiero%20consultar%20por%20un%20producto" class="mobile-menu__wa" target="_blank" rel="noopener noreferrer" id="mobileMenuWa">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.557 4.112 1.528 5.835L0 24l6.335-1.652A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.823 9.823 0 0 1-5.001-1.364l-.359-.214-3.722.97.994-3.62-.234-.374A9.785 9.785 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+          Escribinos por WhatsApp
+        </a>
+        <div class="mobile-menu__social" aria-label="Redes sociales">
+          <a href="https://www.instagram.com/recebo_mates?igsh=dWdzd293NzM0M2E3" target="_blank" rel="noopener noreferrer" aria-label="Instagram" id="mobileMenuIg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.tiktok.com/@recebounomas?_r=1&_t=ZS-97rgONleESt" target="_blank" rel="noopener noreferrer" aria-label="TikTok" id="mobileMenuTt"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.73a8.22 8.22 0 0 0 4.79 1.52V6.78a4.85 4.85 0 0 1-1.02-.09z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- MINI HERO CON BREADCRUMB -->
+    <div class="page-hero page-hero--compact">
+      <div class="container page-hero__inner">
+        <nav class="breadcrumb" aria-label="Migas de pan">
+          <a href="index.html"    class="breadcrumb__link">Inicio</a>
+          <span class="breadcrumb__sep" aria-hidden="true">›</span>
+          <a href="catalogo.html" class="breadcrumb__link">Catálogo</a>
+          <span class="breadcrumb__sep" aria-hidden="true">›</span>
+          <!-- El JS rellena este span con el nombre del producto -->
+          <span id="productoBreadcrumb" class="breadcrumb__current" aria-current="page">Cargando…</span>
+        </nav>
+      </div>
+    </div>
+
+    <!-- DETALLE DEL PRODUCTO -->
+    <section class="section-xl" id="producto-detalle" aria-labelledby="productoTitle">
+      <div class="container">
+        <div class="product-detail">
+
+          <!-- GALERÍA DE IMÁGENES -->
+          <div class="product-gallery">
+
+            <!-- Badge posicionado sobre la imagen -->
+            <div id="productoBadgeWrap" class="product-gallery__badge-wrap" aria-hidden="true"></div>
+
+            <!-- Imagen principal — el JS inyecta aquí el <img> o el placeholder -->
+            <div class="product-gallery__main">
+              <div id="productoImgWrap" class="product-gallery__img-wrap">
+                <!-- Skeleton mientras carga -->
+                <div class="product-gallery__skeleton" aria-hidden="true"></div>
+              </div>
+            </div>
+
+            <!-- Miniaturas — el JS las genera si hay más de 1 imagen -->
+            <div id="productoThumbs" class="product-gallery__thumbs" aria-label="Imágenes adicionales del producto"></div>
+          </div>
+
+          <!-- INFORMACIÓN DEL PRODUCTO -->
+          <div class="product-info">
+
+            <!-- Categoría (eyebrow) — rellena el JS -->
+            <span id="productoCategoria" class="eyebrow eyebrow--accent"></span>
+
+            <!-- Título — rellena el JS -->
+            <h1 id="productoTitle" class="product-info__name">Cargando…</h1>
+
+            <!-- Estrellas -->
+            <div class="product-info__rating" aria-label="5 estrellas de calificación">
+              <span class="product-info__stars" aria-hidden="true">★★★★★</span>
+              <span class="product-info__rating-text">5.0 · Producto artesanal</span>
+            </div>
+
+            <!-- Precio — rellena el JS -->
+            <div class="product-info__price" aria-label="Precio">
+              <span id="productoPrecio" class="product-info__price-value"></span>
+            </div>
+
+            <!-- Descripción — rellena el JS -->
+            <p id="productoDesc" class="product-info__desc"></p>
+
+            <!-- CTA Principal — el JS actualiza el href con el nombre real -->
+            <a
+              href="https://wa.me/5491101283885?text=Hola%2C%20quiero%20consultar%20por%20un%20producto"
+              class="btn btn--whatsapp btn--lg btn--full"
+              target="_blank"
+              rel="noopener noreferrer"
+              id="productWaBtn"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.557 4.112 1.528 5.835L0 24l6.335-1.652A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.823 9.823 0 0 1-5.001-1.364l-.359-.214-3.722.97.994-3.62-.234-.374A9.785 9.785 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+              Consultar por WhatsApp
+            </a>
+
+            <a href="catalogo.html" class="btn btn--ghost btn--full" id="productBackBtn">
+              ← Volver al catálogo
+            </a>
+
+            <!-- Mini Trust -->
+            <ul class="product-trust" role="list" aria-label="Beneficios de compra">
+              <li class="product-trust__item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12H3l9-9 9 9h-2M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>
+                <span>Envíos a todo el país</span>
+              </li>
+              <li class="product-trust__item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>Garantía de calidad</span>
+              </li>
+              <li class="product-trust__item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+                <span>Transferencia, tarjeta o efectivo</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTOS RELACIONADOS — el JS los genera automáticamente -->
+    <section class="section-xl section--alt" id="relacionados" aria-labelledby="relacionadosTitle">
+      <div class="container">
+        <header class="product-related__header reveal">
+          <span class="eyebrow eyebrow--green">También te puede gustar</span>
+          <h2 id="relacionadosTitle">Otros <em>productos</em></h2>
+        </header>
+        <ul id="relacionadosGrid" class="product-related__grid stagger" role="list">
+          <!-- El JS inyecta aquí los productos relacionados -->
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          
+          <p class="footer-tagline">Mates artesanales elaborados con materiales seleccionados. Envíos a todo el país.</p>
+          <nav class="footer-social" aria-label="Redes sociales">
+            <a href="https://www.instagram.com/recebo_mates?igsh=dWdzd293NzM0M2E3" class="footer-social__link" target="_blank" rel="noopener noreferrer" aria-label="Instagram" id="footerIg"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg></a>
+            <a href="https://www.tiktok.com/@recebounomas?_r=1&_t=ZS-97rgONleESt" class="footer-social__link" target="_blank" rel="noopener noreferrer" aria-label="TikTok" id="footerTt"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.73a8.22 8.22 0 0 0 4.79 1.52V6.78a4.85 4.85 0 0 1-1.02-.09z"/></svg></a>
+            <a href="https://wa.me/5491101283885" class="footer-social__link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" id="footerWa"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.557 4.112 1.528 5.835L0 24l6.335-1.652A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.823 9.823 0 0 1-5.001-1.364l-.359-.214-3.722.97.994-3.62-.234-.374A9.785 9.785 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg></a>
+          </nav>
+        </div>
+        <nav class="footer-nav" aria-label="Secciones del sitio">
+          <p class="footer-nav__title">Sitio</p>
+          <a href="index.html"    class="footer-nav__link">Inicio</a>
+          <a href="catalogo.html" class="footer-nav__link">Catálogo</a>
+          <a href="nosotros.html" class="footer-nav__link">Nosotros</a>
+          <a href="faq.html"      class="footer-nav__link">Preguntas frecuentes</a>
+          <a href="contacto.html" class="footer-nav__link">Contacto</a>
+        </nav>
+        <div class="footer-contact" aria-label="Información de contacto">
+          <p class="footer-nav__title">Contacto</p>
+          <a href="https://wa.me/5491101283885" class="footer-contact__link" target="_blank" rel="noopener noreferrer" id="footerContactWa"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.557 4.112 1.528 5.835L0 24l6.335-1.652A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.823 9.823 0 0 1-5.001-1.364l-.359-.214-3.722.97.994-3.62-.234-.374A9.785 9.785 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>+54 9 11 0128-3885</a>
+          <a href="mailto:recebounomas@gmail.com" class="footer-contact__link" id="footerContactEmail"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>recebounomas@gmail.com</a>
+          <p class="footer-contact__info">Villa Devoto, CABA<br>Envíos a todo el país</p>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <span>© <span id="footerYear"></span> Recebo Mates. Todos los derechos reservados.</span>
+        <span>Hecho con ♥ en Villa Devoto, CABA</span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5491101283885?text=Hola%2C%20quiero%20consultar%20sobre%20los%20mates" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" id="waFloat">
+    <svg class="wa-float__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.557 4.112 1.528 5.835L0 24l6.335-1.652A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.823 9.823 0 0 1-5.001-1.364l-.359-.214-3.722.97.994-3.62-.234-.374A9.785 9.785 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+    <span class="wa-float__text">WhatsApp</span>
+  </a>
+
+  <script src="js/core.js"></script>
+  <script src="js/animations.js"></script>
+  <!-- Datos de productos — debe cargarse antes de producto.js -->
+  <script src="js/productos-data.js"></script>
+  <!-- Motor dinámico de la página de producto -->
+  <script src="js/producto.js"></script>
+</body>
+</html>
