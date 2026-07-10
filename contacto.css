@@ -1,0 +1,207 @@
+/* ============================================================
+   RECEBO MATES — Contacto Page Styles
+   ============================================================ */
+
+/* ─── Grid de canales ───────────────────────────────────── */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  list-style: none;
+}
+
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 560px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin-inline: auto;
+  }
+}
+
+/* ─── Contact Card ──────────────────────────────────────── */
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-8);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition:
+    box-shadow   var(--transition-base),
+    border-color var(--transition-base),
+    transform    var(--transition-slow);
+}
+
+.contact-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(27, 67, 50, 0.18);
+  transform: translateY(-4px);
+}
+
+.contact-card--featured {
+  border-color: var(--color-wa);
+  box-shadow: 0 0 0 1px rgba(37, 211, 102, 0.15);
+}
+
+.contact-card--featured:hover {
+  box-shadow: var(--shadow-wa);
+}
+
+.contact-card__icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-green-tint);
+  border-radius: var(--radius-md);
+  color: var(--color-green);
+  flex-shrink: 0;
+  transition:
+    background-color var(--transition-base),
+    color            var(--transition-base);
+}
+
+.contact-card--featured .contact-card__icon {
+  background-color: rgba(37, 211, 102, 0.10);
+  color: var(--color-wa);
+}
+
+.contact-card__title {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-charcoal);
+  line-height: var(--leading-tight);
+}
+
+.contact-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-3);
+  line-height: var(--leading-relaxed);
+  max-width: none;
+  flex: 1;
+}
+
+.contact-card__detail {
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  color: var(--color-charcoal);
+  max-width: none;
+}
+
+
+/* ─── Horarios ──────────────────────────────────────────── */
+
+.contact-hours {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .contact-hours {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+}
+
+.contact-hours__text h2 {
+  margin-block: var(--space-4) var(--space-5);
+}
+
+.contact-hours__schedule {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.contact-hours__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+  gap: var(--space-4);
+}
+
+.contact-hours__row:last-child {
+  border-bottom: none;
+}
+
+.contact-hours__day {
+  font-size: var(--text-sm);
+  color: var(--color-text-2);
+  font-weight: var(--weight-medium);
+}
+
+.contact-hours__time {
+  font-size: var(--text-sm);
+  color: var(--color-charcoal);
+  font-weight: var(--weight-semibold);
+  text-align: right;
+}
+
+
+/* ─── Redes sociales ────────────────────────────────────── */
+
+.contact-social {
+  display: flex;
+  gap: var(--space-6);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.contact-social__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-8) var(--space-12);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: var(--color-charcoal);
+  transition:
+    border-color  var(--transition-base),
+    box-shadow    var(--transition-base),
+    transform     var(--transition-base);
+  min-width: 180px;
+}
+
+.contact-social__card:hover {
+  border-color: rgba(27, 67, 50, 0.25);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-4px);
+  color: var(--color-green);
+}
+
+.contact-social__name {
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+}
+
+.contact-social__handle {
+  font-size: var(--text-xs);
+  color: var(--color-warm-mid);
+  letter-spacing: var(--tracking-wide);
+}
+
+@media (max-width: 480px) {
+  .contact-social__card {
+    min-width: 0;
+    flex: 1;
+    padding: var(--space-6) var(--space-6);
+  }
+}
