@@ -1,0 +1,225 @@
+/* ============================================================
+   RECEBO MATES — Animations
+   Keyframes y clases de animación controladas por scroll
+   y CSS directo.
+   ============================================================ */
+
+
+/* ─────────────────────────────────────────────────────────────
+   KEYFRAMES
+───────────────────────────────────────────────────────────── */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes shimmer {
+  from { background-position: -200% center; }
+  to   { background-position:  200% center; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1);    opacity: 1; }
+  50%       { transform: scale(1.04); opacity: 0.9; }
+}
+
+/* Flotado suave vertical para elementos decorativos */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   REVEAL ON SCROLL
+   Activadas por IntersectionObserver en animations.js
+───────────────────────────────────────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity   var(--duration-slow) var(--ease-smooth),
+    transform var(--duration-slow) var(--ease-smooth);
+}
+
+.reveal--active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Variante: solo fade (sin movimiento vertical) */
+.reveal--fade {
+  transform: none;
+}
+
+/* Variante: scale */
+.reveal--scale {
+  transform: scale(0.96);
+  transform-origin: top center;
+}
+
+.reveal--scale.reveal--active {
+  transform: scale(1);
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   STAGGER GROUPS
+   Los hijos se animan secuencialmente cuando el padre
+   recibe la clase .stagger--active
+───────────────────────────────────────────────────────────── */
+
+.stagger > * {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity   var(--duration-slow) var(--ease-smooth),
+    transform var(--duration-slow) var(--ease-smooth);
+}
+
+.stagger--active > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delays más cortos — grilla se completa más rápido */
+.stagger--active > *:nth-child(1) { transition-delay:   0ms; }
+.stagger--active > *:nth-child(2) { transition-delay:  60ms; }
+.stagger--active > *:nth-child(3) { transition-delay: 120ms; }
+.stagger--active > *:nth-child(4) { transition-delay: 180ms; }
+.stagger--active > *:nth-child(5) { transition-delay: 240ms; }
+.stagger--active > *:nth-child(6) { transition-delay: 300ms; }
+.stagger--active > *:nth-child(7) { transition-delay: 360ms; }
+.stagger--active > *:nth-child(8) { transition-delay: 420ms; }
+.stagger--active > *:nth-child(9) { transition-delay: 480ms; }
+
+
+/* ─────────────────────────────────────────────────────────────
+   SKELETON LOADING
+   Usado en tarjetas de producto mientras cargan
+───────────────────────────────────────────────────────────── */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-border)     25%,
+    var(--color-ivory-alt)  50%,
+    var(--color-border)     75%
+  );
+  background-size: 200% auto;
+  animation: shimmer 1.8s linear infinite;
+  border-radius: var(--radius-sm);
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   MARQUEE (banda de texto en loop)
+───────────────────────────────────────────────────────────── */
+
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-track {
+  display: inline-flex;
+  animation: marqueeScroll 28s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.marquee-track span {
+  display: inline-block;
+  padding-right: 0; /* El espaciado va dentro del texto con &nbsp; */
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   RESPETA PREFERENCIA DE MOVIMIENTO REDUCIDO
+───────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .reveal,
+  .reveal--scale,
+  .stagger > * {
+    transition: none;
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal--active,
+  .stagger--active > * {
+    opacity: 1;
+    transform: none;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+
+  .skeleton {
+    animation: none;
+    background: var(--color-border);
+  }
+
+}
